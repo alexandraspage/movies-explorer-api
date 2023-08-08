@@ -48,7 +48,7 @@ class EmailError extends Error {
 
 const errorHandler = (err, req, res, next) => {
   let error;
-  // console.log({ error2: err });
+  console.log({ error2: err });
 
   if (err.message === 'Not found' || err.statusCode === 404) {
     error = new NotFoundError(err);
