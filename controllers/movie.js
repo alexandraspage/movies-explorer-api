@@ -5,7 +5,7 @@ const { NotFoundError, ForbiddenError } = require('../middlewares/error');
 const { NO_ERROR, CREATED } = require('../utils/config');
 
 const getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movies) => {
     //  console.log(movies);
       res.status(NO_ERROR).send(movies);
@@ -27,11 +27,10 @@ const deleteMovie = (req, res, next) => {
     .orFail(() => new NotFoundError('Not found'))
     .then((movie) => {
       if (!movie.owner.equals(req.user._id)) {
-        next(new ForbiddenError('Нет прав на удаление'));
-      } else {
-        Movie.deleteOne(movie)
-          .then((data) => res.status(NO_ERROR).send(data));
+        return next(new ForbiddenError('Нет прав на удаление'));
       }
+      return Movie.deleteOne(movie)
+        .then((data) => res.status(NO_ERROR).send(data));
     })
     .catch(next);
 };
