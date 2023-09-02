@@ -21,7 +21,7 @@ mongoose.connect(DB_URL, {
 
 app.use(cors({
   credentials: true,
-  origin: ['https://api.movies-explorer-yp.nomoreparties.co', 'https://movies-explorer-yp.nomoreparties.co', 'http://localhost:3000', 'http://localhost:3000', 'https://localhost:3001', 'https://practicum.yandex.ru', 'http://practicum.yandex.ru'],
+  origin: ['https://api.movies-explorer-yp.nomoreparties.co', 'https://movies-explorer-yp.nomoreparties.co', 'http://localhost:3000', 'http://localhost:3000', 'https://localhost:3001', 'https://practicum.yandex.ru', 'http://practicum.yandex.ru','http://movies-explorer-yp.nomoredomainsicu.ru', 'https://movies-explorer-yp.nomoredomainsicu.ru',
 }));
 
 app.use(helmet());

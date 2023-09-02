@@ -25,7 +25,7 @@ const validateDeliteMovie = celebrate({
 const validateUserMe = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30).optional(),
-    email: Joi.string().email(),
+    email: Joi.string().email().optional(),
   }),
 });
 
